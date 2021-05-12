@@ -252,7 +252,9 @@ spec:
               mountPath: /var/run/crio
             - name: crioconf
               mountPath: /etc/crictl.yaml
-          {{- if eq $csi true }}
+           {{- if eq $csi true }}
+            - mountPath: /var/lib/kubelet/plugins/pxd.portworx.com
+              name: csi-driver-path
         - name: csi-node-driver-registrar
           imagePullPolicy: Always
           {{- if eq $customRegistryURL "none" }}
